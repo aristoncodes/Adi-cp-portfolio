@@ -32,7 +32,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## Phase 1.1
 - [x] AtCoder adapter — `atcoder.jp/users/<user>/history/json` for rating history, kenkoooo's `ac_rank` endpoint for solved count, rank derived from AtCoder's known color-tier thresholds (no submission calendar available from these sources, so `activityCalendar` stays empty for this platform). Verified live.
-- [ ] CodeChef adapter (scrape-based, feature-flaggable) — no public API exists; needs an HTML scraper, high breakage risk per PRD §3
+- [x] CodeChef adapter — scrapes the public `codechef.com/users/<handle>` page (no API exists): current rating from `.rating-number` (provisional `?` stripped), peak from the first "(Highest Rating N)", solved count from "Total Problems Solved", history from the inline `var all_rating = [...]` JSON (IST dates converted to UTC), star rank derived from rating thresholds. Unknown handles redirect to the homepage with a 200, so the missing rating block is treated as "not found". Submission heatmap is loaded client-side, so `activityCalendar` stays empty. Enabled by setting `CODECHEF_HANDLE`. Verified live. Markup drift is the main risk (PRD §3) — the fixture test catches it.
 - [ ] CSES — no per-user public API or profile endpoint exists at all; not syncable the way CF/LC/AtCoder are. Would need a manual/curated value instead of a real adapter.
 - [ ] ICPC — not a personal-rating platform (team/regional contest results, no user API); would need a manually-curated "achievement" entry rather than a sync adapter.
 - [ ] Solved-by-tag / solved-by-difficulty breakdowns
@@ -54,7 +54,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] Vitest unit/contract tests for adapters (`npm run test`) — Codeforces + LeetCode, fixture-mocked `fetch`, cover success + failure paths
 - [x] Playwright smoke E2E (`npm run test:e2e`) — home page renders without crashing (no DB configured), copy-email interaction
 - [ ] Lighthouse CI (Perf ≥ 95, A11y = 100)
-- [x] Contract tests for LeetCode + AtCoder adapters against fixtures (CodeChef adapter doesn't exist — no public API to test against)
+- [x] Contract tests for LeetCode + AtCoder adapters against fixtures + CodeChef (HTML fixture)
 
 ## Notes / Decisions
 - DB host (Neon vs Supabase): **TBD** — schema/client are host-agnostic (plain `postgres://` URL), so this only needs `DATABASE_URL` set whenever a host is picked. Home page gracefully renders an empty state until then.

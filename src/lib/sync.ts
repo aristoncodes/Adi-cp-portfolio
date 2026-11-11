@@ -9,6 +9,7 @@ const HANDLES: Partial<Record<Platform, string>> = {
   codeforces: process.env.CODEFORCES_HANDLE,
   leetcode: process.env.LEETCODE_HANDLE,
   atcoder: process.env.ATCODER_HANDLE,
+  codechef: process.env.CODECHEF_HANDLE,
 };
 
 export interface SyncOutcome {

@@ -456,8 +456,8 @@ export function AdminForm({ content }: { content: ProfileContentData }) {
                 </button>
               </div>
               <p className="text-xs text-muted-foreground">
-                For platforms without live syncing (CodeChef, CSES, ICPC, etc.) —
-                e.g. &quot;CodeChef 4★&quot; or &quot;ICPC Regionalist 2025&quot;.
+                For platforms without live syncing (CSES, ICPC, etc.) —
+                e.g. &quot;CSES 300 solved&quot; or &quot;ICPC Regionalist 2025&quot;.
               </p>
 
               {items.map((item, index) => (
@@ -475,7 +475,7 @@ export function AdminForm({ content }: { content: ProfileContentData }) {
                     </button>
                   </div>
                   <input
-                    placeholder="Title (e.g. CodeChef 4★)"
+                    placeholder="Title (e.g. ICPC Regionalist 2025)"
                     value={item.title}
                     onChange={(e) => updateItem(index, { title: e.target.value })}
                     className={inputClass}

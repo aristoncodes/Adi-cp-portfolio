@@ -10,7 +10,7 @@ interface AchievementCardProps {
 // Styled to match PlatformCard exactly (badge, bold headline, muted
 // subtitle, link) so it reads as the same kind of card in the grid —
 // see progress-tracker.md for why these can't be real sync adapters
-// (CodeChef: no public API, CSES: no per-user API/profile at all,
+// (CSES: no per-user API/profile at all,
 // ICPC: not a personal-rating platform). Owner-curated via /admin.
 export function AchievementCard({
   title,
